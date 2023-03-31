@@ -1,35 +1,25 @@
 <template>
-  <div class="row">
-    <h1>Anime</h1>
-
-    <div class="iframe-container">
-      <nav aria-label="Page navigation example">
-        <div class="">
-          <ul class="pagination row">
-            <div class="row">
-              <li class="page-item col-1">
-                <button class="page-link text-dark" @click="AfterChap">Anterior</button>
-              </li>
-              <div  class="page-link col-10 text-custom"><h3 class="text-custom">{{chap+1}}</h3></div>
-              <li class="page-item col-1">
-                <button class="page-link text-dark" @click="NextChap">Siguiente</button>
-              </li>
-            </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination pagination-lg justify-content-center" style="width: 100%;">
+            <li class="page-item"><button class="page-link text-custom" @click="AfterChap">Anterior</button></li>
+            <li class="page-item"><button class="page-link text-custom" disabled >1</button></li>
+            <li class="page-item"><button class="page-link text-custom" @click="NextChap" >Siguiente</button></li>
           </ul>
-        </div>
-      </nav>
-
-      <video :src="videom[chap]" controls controlslist="nodownload"></video>
+        </nav>
+      </div>
     </div>
-
-    <input
-      type="number"
-      v-model="newbar"
-      @keyup="chap = newbar - 1"
-      placeholder="Numero de Capitulo"
-    />
+    <div class="row">
+      <div class="col-md-12">
+        <video :src="videom[chap]" controls controlslist="nodownload" style="width: 100%;"></video>
+      </div>
+    </div>
   </div>
+
 </template>
+
 
 <script>
 export default {
@@ -42,7 +32,8 @@ export default {
   },
   computed: {
     videom() {
-      return this.$store.state.temp.cap; // Suponemos que `video` está almacenado en el estado del store de Vuex.
+      //return this.$store.state.temp.cap; // Suponemos que `video` está almacenado en el estado del store de Vuex.
+      return this.$store.state.Animes[0].capitulos // Suponemos que `video` está almacenado en el estado del store de Vuex.
     },
   },
   methods: {
@@ -63,25 +54,36 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/*
 .iframe-container {
-  height: 75%;
+  height: 75vh;
   padding-right: 5%;
   padding-left: 5%;
 }
 
 .iframe-container video {
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   border: 2px solid #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  /* Sombra */
 }
-.text-custom{
-  margin: 0;
-  padding: 0;
+
+.video-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+*/
+.text-custom {
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  margin-bottom: 1rem;
   color: #000;
 }
+video{
+  border: 1px solid #ffffff; 
+  border-radius: 10px;
+}
+
+
 
 </style>

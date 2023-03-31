@@ -1,21 +1,29 @@
 <template>
   <div class="container">
     <NavBar />
-    <VideoMedia msg="Welcome to Your Vue.js App"/>
-    <img src="./assets/background.jpg" alt="J-hope" srcset="">
+    <VideoMedia id="MediaVideo" :ResultadoBusqueda="busqueda"/>
+    <!-- <ResultadoAnime /> -->
+    <!-- <img src="./assets/background.jpg" alt="J-hope" srcset=""> -->
   </div>
 </template>
 
 <script>
 import VideoMedia from './components/VideoMedia.vue'
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar.vue'
+//import ResultadoAnime from './components/ResultadoAnime.vue'
 export default {
   name: 'App',
   components: {
     VideoMedia,
-    NavBar
+    NavBar,
+    //ResultadoAnime
+  },
+  data() {
+    return {
+      busqueda:'',
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -28,6 +36,7 @@ export default {
   
   
   
+  
 }
 img{
   width: 25%;
@@ -36,5 +45,10 @@ img{
 img:hover{
   opacity: 1;
 }
-
+#MediaVideo{
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 </style>
